@@ -4,19 +4,17 @@ const getCountries = async () => {
   const query = await knex.select().from('Countrie');
   return query;
 };
-const getState = async (CountrieId) => {
+//.........................................................
+const getState = async (idCountrie) => {
   const query = await knex
     .select()
     .from('State')
-    .where((idCountrie = CountrieId));
+    .where('idCountrie', idCountrie);
   return query;
 };
-
-const getCitys = async (StateId) => {
-  const query = await knex
-    .select()
-    .from('City')
-    .where((idState = StateId));
+//.........................................................
+const getCitys = async (idState) => {
+  const query = await knex.select().from('City').where('idState', idState);
   return query;
 };
 

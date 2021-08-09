@@ -22,8 +22,10 @@ const getCountries = async (req, res) => {
  */
 const getState = async (req, res) => {
   try {
-    const { CountrieId } = req.params;
-    const data = await repo.getState(CountrieId);
+    const { idCountrie } = req.params;
+    console.log(idCountrie);
+    const data = await repo.getState(idCountrie);
+    console.log(data);
     res.status(200).json(data);
   } catch (error) {
     res.status(500).send({ Message: error.sqlMessage });
@@ -36,8 +38,8 @@ const getState = async (req, res) => {
  */
 const getCitys = async (req, res) => {
   try {
-    const { StateId } = req.params;
-    const data = await repo.getCitys(StateId);
+    const { idState } = req.params;
+    const data = await repo.getCitys(idState);
     res.status(200).json(data);
   } catch (error) {
     res.status(500).send({ Message: error.sqlMessage });
